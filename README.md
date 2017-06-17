@@ -64,6 +64,6 @@ $xml = simplexml_load_string($str, 'SimpleXMLElement', LIBXML_NOCDATA | LIBXML_N
 // Convert that to an associative array (there must be a better way)
 $arr = json_decode(json_encode($xml), true);
 
-$serializer = new XMLSerializer('Response');
+$serializer = new XMLSerializer('root');
 echo $serializer->serialize($arr);
 ```
