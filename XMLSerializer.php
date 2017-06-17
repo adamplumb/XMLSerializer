@@ -78,9 +78,6 @@ class XMLSerializer {
     private static function _to_xml(array $array, $depth, $parent_key = null) {
         $depth++;
 
-        $has_string_keys = self::has_string_keys($array);
-        self::debug("_to_xml called with string keys: " . $has_string_keys);
-
         // This is a special case where there is a single empty element in this string-keyed array
         // Generate a self-closing tag
         if (count($array) == 0) {
@@ -135,7 +132,7 @@ class XMLSerializer {
     }
 
     private static function tag_open($key, $depth = 0, $attributes = null, $self_closing = false) {
-        echo self::to_indent($depth);
+        self::indent($depth);
         echo self::OPEN;
         echo $key;
         if ($attributes) {
@@ -161,7 +158,7 @@ class XMLSerializer {
 
     private static function tag_close($key, $depth) {
         if ($depth > 0) {
-            echo self::to_indent($depth);
+            self::indent($depth);
         }
 
         echo self::OPEN;
@@ -170,7 +167,7 @@ class XMLSerializer {
         echo self::CLOSE;
     }
 
-    private static function to_indent($depth) {
-        return str_repeat(self::INDENT, $depth);
+    private static function indent($depth) {
+        echo str_repeat(self::INDENT, $depth);
     }
 }
