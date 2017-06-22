@@ -70,7 +70,7 @@ echo $serializer->serialize($arr);
 
 ### Benchmarks
 
-I've updated this README with some benchmarks comparing this tool to several others I've since found.  You can see the script I used in examples/benchmark.  For an example XML file I'm using some real files from [here](http://aiweb.cs.washington.edu/research/projects/xmltk/xmldata/www/repository.html).  The xml file in question is about 2MB with 66K nodes.
+I've updated this README with some benchmarks comparing this tool to several others I've since found.  You can see the script I used in [examples/benchmark/benchmark.php](https://github.com/adamplumb/XMLSerializer/blob/master/examples/benchmark/benchmark.php).  For an example XML file I'm using some real files from [here](http://aiweb.cs.washington.edu/research/projects/xmltk/xmldata/www/repository.html).  The xml file in question is about 2MB with 66K nodes.
 
 | Library | Time |
 | --- | --- |
