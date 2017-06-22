@@ -1,0 +1,8 @@
+{
+    "require": {
+        "jms/serializer": "^1.7",
+        "pear/xml_serializer": "^0.21.0",
+        "symfony/serializer": "^3.3",
+        "symfony/property-access": "^3.3"
+    }
+}

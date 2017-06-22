@@ -67,3 +67,23 @@ $arr = json_decode(json_encode($xml), true);
 $serializer = new XMLSerializer('root');
 echo $serializer->serialize($arr);
 ```
+
+### Benchmarks
+
+I've updated this README with some benchmarks comparing this tool to several others I've since found.  You can see the script I used in examples/benchmark.  For an example XML file I'm using some real files from [here](http://aiweb.cs.washington.edu/research/projects/xmltk/xmldata/www/repository.html).  The xml file in question is about 2MB with 66K nodes.
+
+| Library | Time |
+| --- | --- |
+| XMLSerializer | 0.077s |
+| JMSSerializer | 0.1549s |
+| PEAR XML_Serializer | 13.4742s |
+| Symfony Serializer | 0.1537s |
+
+
+Some thoughts:
+ * There are some pretty good options for serializers afterall!
+ * The JMSSerializer output converted all node names to 'entry' and added CDATA to everything.  I couldn't find anything obvious in the documention to help with this but I might have missed it.  
+ * The Symfony serializer is pretty fast too, but I couldn't get it to do indenting or whitespacing.
+ * The PEAR XML_Serializer class should probably be taken out back and put out of its misery.
+
+Overall, I'm pretty happy with the performance of this serializer class so far.  I'm sure there is room for improvement too.\
