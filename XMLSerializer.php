@@ -137,7 +137,9 @@ class XMLSerializer {
         echo $key;
         if ($attributes) {
             foreach ($attributes as $attribute_key => $attribute_value) {
-                echo " {$attribute_key}=\"{$attribute_value}\"";
+                echo " {$attribute_key}=\"";
+                self::sanitized_scalar($attribute_value);
+                echo "\"";
             }
         }
         if ($self_closing) {
@@ -149,11 +151,15 @@ class XMLSerializer {
 
     private static function tag_value($value, $depth) {
         if (self::is_scalar($value)) {
-            echo $value;
+            self::sanitized_scalar($value);
         } else if (is_array($value)) {
             echo self::NEWLINE;
             self::_to_xml($value, $depth);
         }
+    }
+
+    private static function sanitized_scalar($value) {
+        echo str_replace(array('&', "'", '"'), array('&amp;', '&apos;', '&quot;'), $value);
     }
 
     private static function tag_close($key, $depth) {
