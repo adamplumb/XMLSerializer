@@ -149,7 +149,7 @@ class XMLSerializer {
 
     private static function tag_value($value, $depth) {
         if (self::is_scalar($value)) {
-            echo str_replace(array('&', "'", '"'), array('&amp;', '&apos;', '&quot;'), $value);
+            echo $value;
         } else if (is_array($value)) {
             echo self::NEWLINE;
             self::_to_xml($value, $depth);
